@@ -31,17 +31,17 @@ echo "SENTINEL_2_IP : $SENTINEL_2_IP"
 
 redis-cli -h $REDIS_1_IP -p 6379 slaveof $REDIS_0_IP 6379
 
-redis-cli -p 26379 sentinel monitor testing $REDIS_1_IP 6379 2
+redis-cli -p 26379 sentinel monitor testing $REDIS_0_IP 6379 2
 redis-cli -p 26379 sentinel set testing down-after-milliseconds 1000
 redis-cli -p 26379 sentinel set testing failover-timeout 1000
 redis-cli -p 26379 sentinel set testing parallel-syncs 1
 
-redis-cli -p 26378 sentinel monitor testing $REDIS_1_IP 6379 2
+redis-cli -p 26378 sentinel monitor testing $REDIS_0_IP 6379 2
 redis-cli -p 26378 sentinel set testing down-after-milliseconds 1000
 redis-cli -p 26378 sentinel set testing failover-timeout 1000
 redis-cli -p 26378 sentinel set testing parallel-syncs 1
 
-redis-cli -p 26377 sentinel monitor testing $REDIS_1_IP 6379 2
+redis-cli -p 26377 sentinel monitor testing $REDIS_0_IP 6379 2
 redis-cli -p 26377 sentinel set testing down-after-milliseconds 1000
 redis-cli -p 26377 sentinel set testing failover-timeout 1000
 redis-cli -p 26377 sentinel set testing parallel-syncs 1
