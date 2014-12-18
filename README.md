@@ -27,6 +27,8 @@ parallel-syncs 1
 Set up
 ------
 
+Install the redis-cli maybe using apt-get install redis-server
+
 ```
 docker pull redis
 docker pull joshula/redis-sentinel
